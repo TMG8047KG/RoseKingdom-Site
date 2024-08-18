@@ -24,14 +24,14 @@
                         ISSUES
                     </div>
                     <div class="p-4 -m-4 overflow-x-auto scrollbar-none">
-                        <div class="flex justify-between gap-3 mt-4">
+                        <div class="hidden md:flex justify-between gap-3 mt-4">
                             <div class="flex gap-3">
-                                <x-issues.issue-sort route="issues">Trending</x-issues.issue-sort>
-                                <x-issues.issue-sort route="issues">Top</x-issues.issue-sort>
-                                <x-issues.issue-sort route="issues">New</x-issues.issue-sort>
+                                <x-issues.sort route="issues">Relevant</x-issues.sort>
+                                <x-issues.sort route="issues">Old</x-issues.sort>
+                                <x-issues.sort route="issues">New</x-issues.sort>
                             </div>
                             <div class="flex">
-                                <x-issues.issue-sort route="report">
+                                <x-issues.sort route="report">
                                     <span>
                                         <svg viewBox="0 0 20 20" class="flex-shrink-0 w-3.5 h-3.5 mr-1.5">
                                             <g id="Page-1" stroke="none" stroke-width="1" fill="currentColor" fill-rule="evenodd">
@@ -40,17 +40,17 @@
                                         </svg>
                                     </span>
                                     Report a Bug
-                                </x-issues.issue-sort>
+                                </x-issues.sort>
                             </div>
+                        </div>
+                        <div class="md:hidden flex">
+                            <x-issues.sort route="report">Report a Bug</x-issues.sort>
                         </div>
                     </div>
                     <div class="mt-4 -mx-4 overflow-hidden rounded-none border-x-0 border-violet-800 sm:border-x sm:rounded-lg sm:mx-0 up-element dark:bg-violet-950 border-y">
                         <div class="text-white w-full divide-y dark:divide-border divide-violet-700">
-                            <x-issues.issue title="Гошо як ли е?">Гошо е много як! И никой не може да ми каже другаг.</x-issues.issue>
-                            <x-issues.issue title="Русалките акат ли?">Дилемата на века е дали русалките могат да акат и ако могат от къде и как?</x-issues.issue>
-                            <x-issues.issue title="Admin abuse">The admins banned me for walking on water. I they said I was cheating, but I was not!</x-issues.issue>
-                            @foreach( $issues as $key => $data )
-                                <x-issues.issue title="{{ $data->title }}">{{ $data-> description }}</x-issues.issue>
+                            @foreach( $issue as $data )
+                                <x-issues.issue href="/issues/{{ $data->id }}" tag="{{ $data->tag }}" title="{{ $data->title }}">{{ $data-> description }}</x-issues.issue>
                             @endforeach
                         </div>
                     </div>

@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>RoseKingdom</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../style.css">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-</head>
-<body>
+<x-body>
     <div class="h-screen bg-gradient-to-b from-violet-950 to-purple-950 scrollbar-hide">
         <div class="w-full">
             <div class="flex justify-start">
@@ -39,9 +26,10 @@
                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">What's the bug?</label>
                 <textarea id="description" name="description" rows="12" class="resize-none scrollbar-hide block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="A detailed explanation of the bug"></textarea>
             </div>
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
             <button type="submit" class="text-white bg-violet-800 hover:bg-violet-900 focus:ring-4 focus:outline-none focus:ring-violet-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-800 dark:hover:bg-violet-900 dark:focus:ring-violet-800">Post Report</button>
         </form>
     </div>
-</body>
+</x-body>
 
 

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\IssuesController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,11 +17,19 @@ Route::get('/guides', function () {
     return view('guides');
 })->name('guides');
 
-Route::get('/issues', function () {
-    $issues = DB::table("issues")->get();
-    return view('issues', ['issues' => $issues]);
-})->name('issues');
-
+Route::get('/issues', [IssuesController::class, 'index'])->name('issues');
 Route::get('/issues/report', [IssuesController::class, 'form'])->name('report');
+Route::get('/issues/{id}', [IssuesController::class, 'show']);
+Route::post('/issues', [IssuesController::class, 'create']);
 
-Route::post('/issues', [IssuesController::class, 'createIssue']);
+
+Route::get('/register', [UserRegistrationController::class, 'form'])->name('register');
+Route::post('/register', [UserRegistrationController::class, 'register']);
+
+Route::get('/login', [SessionController::class, 'form'])->name('login');
+Route::post('/login', [SessionController::class, 'login']);
+Route::post('/logout', [SessionController::class, 'logout']);
+
+
+
+
